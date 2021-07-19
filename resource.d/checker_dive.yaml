@@ -1,0 +1,20 @@
+apiVersion: alpha
+kind: checker
+metadata:
+  name: "http-dive"
+  labels:
+    a: b
+    c: d
+spec:
+  kind: http
+  spec:
+    notifier: dingtalk-basic
+    disable: false
+    reportTimes: 3
+    url: "http://dive.cloud.51caocao.net"
+    cron: "0/5 * * * * ?"
+    mustContain:
+      - "o"
+      - "k"
+    mustNotContain:
+      - "red"

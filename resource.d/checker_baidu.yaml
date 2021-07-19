@@ -1,0 +1,17 @@
+apiVersion: alpha
+kind: checker
+metadata:
+  name: "http-baidu"
+  labels:
+    a: b
+    c: d
+spec:
+  kind: http
+  spec:
+    notifier: dingtalk-basic
+    disable: true
+    reportTimes: 3
+    url: "https://www.baidu.com"
+    cron: "0/10 * * * * ?"
+    successCode:
+      - "200"

@@ -1,0 +1,12 @@
+apiVersion: alpha
+kind: notifier
+metadata:
+  name: dingtalk-basic
+  labels:
+    a: b
+    c: d
+spec:
+  kind: dingtalk
+  spec:
+    accessToken: 30a3f23xxxxxxxxx
+    secret: SEC51866c35exxxxxxx

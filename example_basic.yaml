@@ -1,0 +1,7 @@
+apiVersion: v1_beta1
+kind: CronJob
+metadata:
+  name: monitor-es
+  desc: 监控es健康检查
+spec:
+  schedule: "*/20 * * * *"
