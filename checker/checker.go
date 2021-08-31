@@ -3,12 +3,14 @@ package checker
 import (
 	"fmt"
 	"woodpecker/checker/http"
+	"woodpecker/checker/tcp"
 	"woodpecker/core"
 )
 
 var builders = map[string]func(template *CheckerTemplate) (Checker, error){}
 
 func init() {
+	builders[tcp.Kind] = newTcpChecker
 	builders[http.Kind] = newHttpChecker
 }
 
@@ -44,6 +46,16 @@ func NewChecker(template *CheckerTemplate) (Checker, error) {
 
 func newHttpChecker(template *CheckerTemplate) (Checker, error) {
 	c := http.Checker{}
+	err := core.Interface2Interface(template.Spec.Spec, &c)
+	if err != nil {
+		return nil, err
+	}
+	c.Name = template.Metadata.Name
+	return &c, nil
+}
+
+func newTcpChecker(template *CheckerTemplate) (Checker, error) {
+	c := tcp.Checker{}
 	err := core.Interface2Interface(template.Spec.Spec, &c)
 	if err != nil {
 		return nil, err
