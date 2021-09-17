@@ -1,17 +1,17 @@
 apiVersion: alpha
 kind: checker
 metadata:
-  name: "http-dive"
+  name: "tcp-dev-im"
   labels:
     a: b
     c: d
 spec:
-  kind: http
+  kind: tcp
   spec:
     notifier: dingtalk-basic
     disable: false
     reportTimes: 3
-    url: "http://dive.cloud.51.net"
+    address: "im.tcp.net:8087"
     cron: "0/5 * * * * ?"
     mustContain:
       - "o"

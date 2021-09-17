@@ -9,9 +9,10 @@ spec:
   kind: http
   spec:
     notifier: dingtalk-basic
-    disable: false
+    # true: 此配置不生效, false 此配置生效
+    disable: true
     reportTimes: 3
-    url: "http://dive.cloud.51caocao.net"
+    url: "http://dive.cloud.51.net"
     cron: "0/5 * * * * ?"
     mustContain:
       - "o"

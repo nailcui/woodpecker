@@ -17,12 +17,12 @@ func EnableAllChecker(engine *Engine) error {
 		}
 		checker.Init()
 		_, err := c.AddFunc(checker.GetCron(), func() {
-			logger.Info(fmt.Sprintf("%s url check start", checker.GetName()))
+			logger.Info(fmt.Sprintf("%s check start", checker.GetName()))
 			if err := checker.Check(); err != nil {
-				logger.Info(fmt.Sprintf("%s url check unhealth error: %s\n", checker.GetName(), err.Error()))
+				logger.Info(fmt.Sprintf("%s check unhealth error: %s\n", checker.GetName(), err.Error()))
 				err = engine.NotifierMap[checker.GetNotifier()].Send(err.Error())
 				if err != nil {
-					logger.Info(fmt.Sprintf("%s url check unhealth send msg to %s error: %s\n", checker.GetName(), checker.GetNotifier(), err.Error()))
+					logger.Info(fmt.Sprintf("%s check unhealth send msg to %s error: %s\n", checker.GetName(), checker.GetNotifier(), err.Error()))
 				}
 			}
 		})
